@@ -9,16 +9,16 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/augusto-mbs/clean-arch/internal/infra/graph/model"
+	model1 "github.com/augusto-mbs/clean-arch/graph/model"
 )
 
 // CreateOrder is the resolver for the createOrder field.
-func (r *mutationResolver) CreateOrder(ctx context.Context, input *model.OrderInput) (*model.Order, error) {
+func (r *mutationResolver) CreateOrder(ctx context.Context, input *model1.OrderInput) (*model1.Order, error) {
 	panic(fmt.Errorf("not implemented: CreateOrder - createOrder"))
 }
 
 // Orders is the resolver for the orders field.
-func (r *queryResolver) Orders(ctx context.Context) ([]*model.Order, error) {
+func (r *queryResolver) Orders(ctx context.Context) ([]*model1.Order, error) {
 	panic(fmt.Errorf("not implemented: Orders - orders"))
 }
 
