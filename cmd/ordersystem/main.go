@@ -4,18 +4,14 @@ import (
 	"database/sql"
 	"fmt"
 	"net"
-	"net/http"
 
 	"github.com/augusto-mbs/clean-arch/configs"
 	"github.com/augusto-mbs/clean-arch/internal/event/handler"
-	"github.com/augusto-mbs/clean-arch/internal/infra/graph"
 	"github.com/augusto-mbs/clean-arch/internal/infra/grpc/pb"
 	"github.com/augusto-mbs/clean-arch/internal/infra/grpc/service"
 	"github.com/augusto-mbs/clean-arch/internal/infra/web/webserver"
 	"github.com/augusto-mbs/clean-arch/pkg/events"
 
-	graphql_handler "github.com/99designs/gqlgen/graphql/handler"
-	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/streadway/amqp"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -66,15 +62,15 @@ func main() {
 	}
 	go grpcServer.Serve(lis)
 
-	srv := graphql_handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{
-		CreateOrderUseCase: *createOrderUseCase,
-		ListOrdersUseCase:  *listOrdersUseCase,
-	}}))
-	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
-	http.Handle("/query", srv)
+	// srv := graphql_handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{
+	// 	CreateOrderUseCase: *createOrderUseCase,
+	// 	ListOrdersUseCase:  *listOrdersUseCase,
+	// }}))
+	// http.Handle("/", playground.Handler("GraphQL playground", "/query"))
+	// http.Handle("/query", srv)
 
-	fmt.Println("Starting GraphQL server on port", configs.GraphQLServerPort)
-	http.ListenAndServe(":"+configs.GraphQLServerPort, nil)
+	// fmt.Println("Starting GraphQL server on port", configs.GraphQLServerPort)
+	// http.ListenAndServe(":"+configs.GraphQLServerPort, nil)
 }
 
 func getRabbitMQChannel() *amqp.Channel {
