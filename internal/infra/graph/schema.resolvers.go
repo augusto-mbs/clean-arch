@@ -9,7 +9,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/augusto-mbs/clean-arch/graph/model"
+	"github.com/augusto-mbs/clean-arch/internal/infra/graph/model"
 )
 
 // CreateOrder is the resolver for the createOrder field.
