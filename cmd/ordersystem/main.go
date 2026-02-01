@@ -8,7 +8,7 @@ import (
 
 	"github.com/augusto-mbs/clean-arch/configs"
 	"github.com/augusto-mbs/clean-arch/internal/event/handler"
-	database "github.com/augusto-mbs/clean-arch/internal/infra/database/migrations"
+	"github.com/augusto-mbs/clean-arch/internal/infra/database/migrations"
 	"github.com/augusto-mbs/clean-arch/internal/infra/graph"
 	"github.com/augusto-mbs/clean-arch/internal/infra/grpc/pb"
 	"github.com/augusto-mbs/clean-arch/internal/infra/grpc/service"
@@ -40,7 +40,7 @@ func main() {
 	defer db.Close()
 
 	// Run migrations
-	if err := database.RunMigrations(db); err != nil {
+	if err := migrations.RunMigrations(db); err != nil {
 		panic(err)
 	}
 
